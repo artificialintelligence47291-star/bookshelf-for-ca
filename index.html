@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-Shelf for CAs - Study Portal</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fa-solid fa-book-open"></i>
+                <h1>Book-Shelf <span>for CAs</span></h1>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="study-material">
+                    <i class="fa-solid fa-graduation-cap"></i> Study Material
+                </button>
+                <button class="nav-btn" data-tab="papers">
+                    <i class="fa-solid fa-file-pen"></i> Exam Papers
+                </button>
+                <button class="nav-btn" data-tab="notifications">
+                    <i class="fa-solid fa-bell"></i> Notifications
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Level Filter (Visible only for relevant tabs) -->
+        <div class="level-filter-container" id="levelFilter">
+            <div class="container">
+                <div class="filter-group">
+                    <span class="filter-label">Select Level:</span>
+                    <label class="radio-label">
+                        <input type="radio" name="level" value="foundation" checked>
+                        <span class="radio-btn">Foundation</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="level" value="intermediate">
+                        <span class="radio-btn">Intermediate</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="level" value="final">
+                        <span class="radio-btn">Final</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Study Material -->
+        <section id="study-material" class="content-section active">
+            <div class="container">
+                <div class="shelf-unit">
+                    <div class="shelf-header">
+                        <h2 data-level-title>Foundation Course</h2>
+                        <span class="shelf-subtitle">Click a book to download subject material</span>
+                    </div>
+
+                    <!-- Shelf 1 -->
+                    <div class="wood-shelf">
+                        <div class="books-container" id="material-books">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="shelf-base"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Exam Papers -->
+        <section id="papers" class="content-section">
+            <div class="container">
+                <div class="shelf-unit">
+                    <div class="shelf-header">
+                        <h2 data-level-title>Exam Papers</h2>
+                        <span class="shelf-subtitle">MTPs, RTPs & Past Year Papers</span>
+                    </div>
+
+                    <!-- Shelf for Papers -->
+                    <div class="wood-shelf">
+                        <div class="books-container" id="paper-books">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="shelf-base"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Notifications -->
+        <section id="notifications" class="content-section">
+            <div class="container">
+                <div class="notice-board-frame">
+                    <div class="notice-board-header">
+                        <h2><i class="fa-solid fa-bullhorn"></i> ICAI Notifications & Circulars</h2>
+                    </div>
+                    <div class="notice-list" id="notice-list">
+                        <!-- Populated by JS -->
+                        <div class="notice-item pinned">
+                            <div class="notice-date">JAN 08</div>
+                            <div class="notice-content">
+                                <h3>Updates for May 2026 Examination</h3>
+                                <p>Important announcement regarding the upcoming examination cycle schedule and fees.
+                                </p>
+                                <a href="#" class="notice-link">Download PDF <i class="fa-solid fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <div class="notice-date">JAN 05</div>
+                            <div class="notice-content">
+                                <h3>Applicability of Standards for Intermediate</h3>
+                                <p>List of applicable Accounting Standards for the next term.</p>
+                                <a href="#" class="notice-link">Read Circular <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- More static items for demo -->
+                        <div class="notice-item">
+                            <div class="notice-date">DEC 28</div>
+                            <div class="notice-content">
+                                <h3>Campus Placement Programme 2025</h3>
+                                <p>Registration open for newly qualified CAs for the Feb-March placement drive.</p>
+                                <a href="#" class="notice-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chapter Modal -->
+    <div id="chapterModal" class="chapter-modal">
+        <div class="chapter-modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <div class="modal-book-icon"><i class="fa-solid fa-book-open"></i></div>
+                <h2 id="modalSubjectTitle">Subject Name</h2>
+                <span class="modal-level-badge" id="modalLevelBadge">Foundation</span>
+            </div>
+            <div class="chapter-list" id="chapterList">
+                <!-- Chapters populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Book-Shelf for CAs. Designed for Student Success.</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
